@@ -1,0 +1,42 @@
+﻿@using Homework4.Models.Enums
+@model Homework4.Models.Domain.Order
+
+@{
+}
+
+<h1>Place your order</h1>
+
+<form method="post" asp-action="Add" class="mt-5">
+    <div class="mb-3">
+        <label asp-for="CustomerName" class="form-label"></label>
+        <input type="text" class="form-control" asp-for="CustomerName">
+        <span asp-validation-for="CustomerName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label"></label>
+        <input type="text" class="form-control" asp-for="Address">
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Pizza" class="form-label"></label>
+        <select asp-for="Pizza" class="form-control" asp-items="Html.GetEnumSelectList<PizzaEnum>()">
+        </select>
+        <span asp-validation-for="Pizza" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Phone" class="form-label"></label>
+        <input type="text" class="form-control" asp-for="Phone">
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input type="text" class="form-control" asp-for="Email">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="AdditionalOrderInfo" class="form-label">Additional information</label>
+        <input type="text" class="form-control" asp-for="AdditionalOrderInfo">
+        <span asp-validation-for="AdditionalOrderInfo" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
