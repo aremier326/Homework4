@@ -22,7 +22,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.Id</td>
+            <th>@item.Id</th>
             <td>@item.CustomerName</td>
             <td>@item.Address</td>
             <td>@item.Pizza</td>
@@ -33,8 +33,6 @@
                 @Html.ActionLink("View", "View", "PizzaOrder", new { id = @item.Id }, new { @class="btn btn-primary" })
             </td>
         </tr>
-
-        
     }
     </tbody>
 </table>
