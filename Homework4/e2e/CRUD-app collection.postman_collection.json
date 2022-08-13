@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "1bea5429-77fb-4fe5-b4a4-416bcccd2d9e",
+		"name": "CRUD-app collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22774490"
+	},
+	"item": [
+		{
+			"name": "Get items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{domain}}/PizzaOrder/Index",
+					"protocol": "https",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"PizzaOrder",
+						"Index"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Created successfull\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"John Doe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "CustomerName",
+							"value": "John Doe",
+							"type": "text"
+						},
+						{
+							"key": "Address",
+							"value": "NM, Albuquerque",
+							"type": "text"
+						},
+						{
+							"key": "Pizza",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Phone",
+							"value": "+14842634679",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "email@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "AdditionalOrderInfo",
+							"value": "please, add lots of cheese!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{domain}}/PizzaOrder/Add",
+					"protocol": "https",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"PizzaOrder",
+						"Add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get new item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get single item successfull\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"John Doe\", environment.orderId);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{domain}}/PizzaOrder/View/{{orderId}}",
+					"protocol": "https",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"PizzaOrder",
+						"View",
+						"{{orderId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update new item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Update successfull\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"John Doe Updated\", environment.orderId);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "CustomerName",
+							"value": "John Doe Updated",
+							"type": "text"
+						},
+						{
+							"key": "Address",
+							"value": "NM, Albuquerque",
+							"type": "text"
+						},
+						{
+							"key": "Pizza",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "Phone",
+							"value": "+14842634679",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "newEmail@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "AdditionalOrderInfo",
+							"value": "don't add cheese!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{domain}}/PizzaOrder/View/{{orderId}}",
+					"protocol": "https",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"PizzaOrder",
+						"View",
+						"{{orderId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete created item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Delete successfull\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.include(\"John Doe Updated\", environment.orderId);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://{{domain}}/PizzaOrder/Delete/{{orderId}}",
+					"protocol": "https",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"PizzaOrder",
+						"Delete",
+						"{{orderId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
