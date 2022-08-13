@@ -1,0 +1,38 @@
+﻿@using Homework4.Models.Domain
+@model IEnumerable<Homework4.Models.Domain.Order>
+
+@{
+}
+
+<h1 class="m-5">Orders</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Customer Name</th>
+        <th>Address</th>
+        <th>Pizza</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Additional Order Information</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Id</th>
+            <td>@item.CustomerName</td>
+            <td>@item.Address</td>
+            <td>@item.Pizza</td>
+            <td>@item.Phone</td>
+            <td>@item.Email</td>
+            <td>@item.AdditionalOrderInfo</td>
+            <td>
+                @Html.ActionLink("View", "View", "PizzaOrder", new { id = @item.Id }, new { @class="btn btn-primary" })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

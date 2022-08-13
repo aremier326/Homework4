@@ -1,7 +1,13 @@
+using Homework4.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<PizzaDeliveryDbContext>(options =>
+    options.UseSqlServer(builder.Configuration
+        .GetConnectionString("PizzaDeliveryConnectionString")));
 
 var app = builder.Build();
 
